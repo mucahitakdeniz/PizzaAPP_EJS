@@ -1,6 +1,4 @@
 "use strict"
-
-
 // setToken(userData:object, isRefresh?:boolean):
 
 const jwt = require('jsonwebtoken')

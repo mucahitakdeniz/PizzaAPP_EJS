@@ -1,5 +1,4 @@
 "use strict"
-
 // Auth Controller:
 
 const jwt = require('jsonwebtoken')

@@ -1,5 +1,4 @@
 "use strict"
-
 // Pizza Controller:
 
 const Pizza = require('../../models/pizza')

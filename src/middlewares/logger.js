@@ -1,8 +1,5 @@
 "use strict"
 
-
-// app.use(logger):
-
 const morgan = require('morgan')
 const fs = require('node:fs')
 

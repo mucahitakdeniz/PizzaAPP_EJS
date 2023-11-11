@@ -1,8 +1,5 @@
 "use strict"
 
-
-// app.use(authentication):
-
 const jwt = require('jsonwebtoken')
 
 module.exports = (req, res, next) => {
@@ -21,8 +18,9 @@ module.exports = (req, res, next) => {
         }
     })
 
-    //Global variables for templates
-    res.locals.user= req.session?.user
+    // FOR TEMPLATES: Check user from session and set to locals:
+    // Global variables for templates:
+    res.locals.user = req.session?.user
 
     next()
 }

@@ -1,5 +1,4 @@
 "use strict"
-
 // Middleware: permissions
 
 module.exports = {

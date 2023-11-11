@@ -1,5 +1,4 @@
 "use strict"
-
 // Topping Controller:
 
 const Topping = require('../../models/topping')

@@ -33,8 +33,16 @@ const ejs = require('ejs')
 ejs.openDelimiter = '{'
 ejs.closeDelimiter = '}'
 
-app.set('view engine', 'ejs')
 app.set('views', './public')
+app.set('view engine', 'ejs')
+
+// {% ... %}
+// const ejs = require('ejs')
+// ejs.openDelimiter = '{'
+// ejs.closeDelimiter = '}'
+app.set('view options', {
+    openDelimiter: '{', closeDelimiter: '}'
+})
 
 // Accept form data & convert to object:
 app.use(express.urlencoded({ extended: true }))

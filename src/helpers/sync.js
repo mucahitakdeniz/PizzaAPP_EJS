@@ -1,5 +1,4 @@
 "use strict"
-
 // sync():
 
 module.exports = async function () {

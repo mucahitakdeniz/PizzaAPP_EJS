@@ -1,5 +1,4 @@
 "use strict"
-
 // app.use(findSearchSortPage):
 
 module.exports = (req, res, next) => {  

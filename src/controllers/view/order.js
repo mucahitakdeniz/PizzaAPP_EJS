@@ -1,5 +1,5 @@
 "use strict"
- /*
+/*
 {
   "userId": "652d7681508462fafafa01a2",
   "pizzaId": "652d76c5508462fafafa01b0",
@@ -13,14 +13,14 @@
 const Pizza = require('../../models/pizza')
 const Order = require('../../models/order')
 
-//! const pizzaSizes = ['Small', 'Medium', 'Large', 'XLarge']
+const pizzaSizes = ['Small', 'Medium', 'Large', 'XLarge']
 
 module.exports = {
 
     list: async (req, res) => {
 
         // only self-records:
-        //! const filter = req.session?.user && !req.session?.user.isAdmin ? { userId: req.session.user.id } : {}
+        const filter = req.session?.user?.isAdmin ? {} : { userId: req.session.user.id }
 
         // const data = await res.getModelList(Order, {}, ['userId', 'pizzaId'])
         const data = await res.getModelList(Order, filter, [
@@ -37,6 +37,7 @@ module.exports = {
         // Add '?' parameters to url if there is not:
         if (!req.originalUrl.includes('?')) req.originalUrl += '?'
 
+        // console.log(data)
         res.render('orderList', {
             details: await res.getModelListDetails(Order, filter),
             orders: data,
@@ -123,10 +124,11 @@ module.exports = {
 
         } else {
 
+            console.log(await Order.findOne({ _id: req.params.id }))
             res.render('orderForm', {
                 order: await Order.findOne({ _id: req.params.id }),
                 pizzas: await Pizza.find(),
-                //! pizzaSizes,
+                pizzaSizes,
             })
         }
 

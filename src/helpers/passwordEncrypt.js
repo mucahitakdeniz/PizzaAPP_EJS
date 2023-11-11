@@ -1,5 +1,4 @@
 "use strict"
-
 // passwordEncrypt(password:string):
 
 const crypto = require('node:crypto'),
