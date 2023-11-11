@@ -3,7 +3,7 @@
     <!-- content start -->
     <div class="pb-5">
         <div class="mx-auto d-flex justify-content-center align-items-center pt-5">
-            <div class="card w-50">
+            <div class="card w-50 bg-danger-subtle">
                 <div class="card-body">
                     <h2>{%= (order ? 'Update' : 'Create') %}</h2>
                     <hr>
@@ -39,7 +39,8 @@
                             </tbody>
                         </table>
                         <br>
-                        <input class="btn btn-primary" type="submit" value="OK">
+                        <a class="d-flex"> <input class="btn btn-primary w-25 mx-auto" type="submit" value="OK">
+                        </a>
                     </form>
                 </div>
             </div>
