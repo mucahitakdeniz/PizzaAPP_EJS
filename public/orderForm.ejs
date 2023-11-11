@@ -3,7 +3,7 @@
     <!-- content start -->
     <div class="pb-5">
         <div class="mx-auto d-flex justify-content-center align-items-center pt-5">
-            <div class="card w-50 bg-danger-subtle">
+            <div class="card w-50">
                 <div class="card-body">
                     <h2>{%= (order ? 'Update' : 'Create') %}</h2>
                     <hr>
@@ -12,35 +12,41 @@
                             <tbody>
                                 <tr>
                                     <td>Pizza</td>
-                                    <td> <select name="pizzaId" class="form-select">
+                                    <td>
+                                        {% if (pizzas) { %}
+                                        <select name="pizzaId" class="form-select">
                                             {% for (pizza of pizzas) { %}
-                                            <option value="{%= pizza.id %}" {%= (pizza.id == order.pizzaId ? 'selected' : '') %}>{%= pizza.name %}</option>
+                                            <option value="{%= pizza.id %}" {%= (pizza.id == order?.pizzaId ? 'selected' : '') %}>{%= pizza.name %}</option>
                                             {% } %}
-                                        </select> </td>
+                                        </select>
+                                        {% } else { %}
+                                        <span>{%= pizza.name %}</span>
+                                        <!-- <input type="hidden" name="pizzaId" value="{%= pizza.id %}"> -->
+                                        {% } %}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Size</td>
                                     <td>
                                         <select name="size" class="form-select">
                                             {% for (let pizzaSize of pizzaSizes) { %}
-                                            <option value="{%= pizzaSize %}" {%= (pizzaSize == order.size ? 'selected' : '') %}>{%= pizzaSize %}</option>
+                                            <option value="{%= pizzaSize %}" {%= (pizzaSize == order?.size ? 'selected' : '') %}>{%= pizzaSize %}</option>
                                             {% } %}
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Quantitiy</td>
-                                    <td><input type="text" name="quantity" required class="form-control" value="{%= order?.quantity %}"></td>
+                                    <td>Quantity</td>
+                                    <td><input type="text" name="quantity" required class="form-control" value="{%= order?.quantity || 1 %}"></td>
                                 </tr>
                                 <tr>
                                     <td>Price</td>
-                                    <td><input type="text" name="price" required class="form-control" value="{%= order?.price    %}"></td>
+                                    <td><input type="text" name="price" required class="form-control" value="{%= order?.price || pizza?.price %}"></td>
                                 </tr>
                             </tbody>
                         </table>
                         <br>
-                        <a class="d-flex"> <input class="btn btn-primary w-25 mx-auto" type="submit" value="OK">
-                        </a>
+                        <input class="btn btn-primary" type="submit" value="OK">
                     </form>
                 </div>
             </div>

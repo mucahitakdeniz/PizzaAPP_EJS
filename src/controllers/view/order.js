@@ -1,5 +1,7 @@
 "use strict"
-/*
+/* -------------------------------------------------------
+    NODEJS EXPRESS | CLARUSWAY FullStack Team
+------------------------------------------------------- *
 {
   "userId": "652d7681508462fafafa01a2",
   "pizzaId": "652d76c5508462fafafa01b0",
@@ -50,7 +52,9 @@ module.exports = {
         if (req.method == 'POST') {
 
             // Add userId from session:
-            //! req.body.userId = req.session.user.id
+            req.body.userId = req.session.user.id
+            // Add pizzaId from req.query:
+            req.body.pizzaId = req.query.pizza
 
             // Calculatings:
             req.body.quantity = req.body?.quantity || 1 // default: 1
@@ -75,7 +79,7 @@ module.exports = {
                 order: null,
                 pizzas: null,
                 pizza: await Pizza.findOne({ _id: req.query.pizza }),
-                //! pizzaSizes,
+                pizzaSizes,
             })
         }
     },

@@ -3,11 +3,11 @@
     <!-- content start -->
     <div class="pb-5">
         <div class="d-flex flex-column justify-content-center mx-auto pt-5 col-9">
-            <div class="alert alert-warning text-center p-1">
-                <h1>{%= user?.username %}'s Orders</h1>
+            <div class="alert alert-warning text-center p-1 bg-warning">
+                <h1 >{%= user?.username %}'s Orders</h1>
             </div>
             {% for (let order of orders) { %}
-            <div class="card m-2 shadow p-2">
+            <div class="card m-2 shadow p-2 bg-primary" >
                 <div class="row g-0 d-flex justify-content-between">
                     <div class="col-md-1 d-flex align-items-center">
                         {% if (order.pizzaId?.image) { %}
@@ -22,9 +22,13 @@
                                 <label>🍕 Quantitiy: <strong> {%= order.quantity %} </strong></label>
                                 <label>🍕 Total: {%= order.price %} x {%= order.quantity %} = <strong> {%= order.totalPrice %} </strong></label>
                             </p>
+                            {% if (user.isAdmin) { %}
+                            <label> 🙍‍♂️ Order owner: <strong> {%= order.userId.username %} </strong></label>{% } %}
+                        
+                        
+                           
                         </div>
                     </div>
-                    <!-- admin-area-start -->
                     {% if (user) { %}
                     <div class="col-md-3 d-flex align-items-center rounded">
                         <a href="/orders/{%= order.id %}"> <button class="btn btn-sm btn-info me-1">Detail</button></a>
@@ -35,7 +39,6 @@
                         {% } %}
                     </div>
                     {% } %}
-                    <!-- admin-area-end -->
                 </div>
             </div>
             {% } %}
