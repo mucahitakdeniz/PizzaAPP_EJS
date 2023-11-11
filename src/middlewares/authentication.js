@@ -21,5 +21,8 @@ module.exports = (req, res, next) => {
         }
     })
 
+    //Global variables for templates
+    res.locals.user= req.session?.user
+
     next()
 }
